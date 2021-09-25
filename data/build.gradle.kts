@@ -14,8 +14,12 @@ android {
         
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        sourceSets {
+            getByName("main").java.srcDir("src/main/kotlin")
+        }
     }
-    
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -59,4 +63,6 @@ dependencies {
     // Test
     androidTestApi(buildsrc.Libs.AndroidX.Test.junit)
     androidTestApi(buildsrc.Libs.AndroidX.Test.espressoCore)
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
 }
