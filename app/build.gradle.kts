@@ -8,24 +8,28 @@ plugins {
 android {
     compileSdk = 30
     buildToolsVersion = "30.0.3"
-
+    
     defaultConfig {
         applicationId = "com.mashup.helltabus"
         minSdk = 23
         targetSdk = 30
         versionCode = buildsrc.Versions.App.major * 1000 +
-                buildsrc.Versions.App.feature * 100 +
-                buildsrc.Versions.App.regular * 10 +
-                buildsrc.Versions.App.minor
-        versionName = "${buildsrc.Versions.App.major}.${buildsrc.Versions.App.feature}.${buildsrc.Versions.App.regular}.${buildsrc.Versions.App.minor}"
-
+            buildsrc.Versions.App.feature * 100 +
+            buildsrc.Versions.App.regular * 10 +
+            buildsrc.Versions.App.minor
+        versionName =
+            "${buildsrc.Versions.App.major}.${buildsrc.Versions.App.feature}.${buildsrc.Versions.App.regular}.${buildsrc.Versions.App.minor}"
+        
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    
     buildTypes {
-        getByName("release")  {
+        getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -41,11 +45,11 @@ dependencies {
     implementation(project(":presentation"))
     implementation(project(":domain"))
     implementation(project(":data"))
-
+    
     // Hilt
     implementation(buildsrc.Libs.Hilt.hilt)
     implementation("androidx.test:monitor:1.4.0")
-    kapt(buildsrc.Libs.Hilt.androidCompiler)
     implementation(buildsrc.Libs.Hilt.viewModel)
+    kapt(buildsrc.Libs.Hilt.androidCompiler)
     kapt(buildsrc.Libs.Hilt.hiltCompiler)
 }

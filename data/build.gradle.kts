@@ -7,23 +7,22 @@ plugins {
 android {
     compileSdk = 30
     buildToolsVersion = "30.0.3"
-
+    
     defaultConfig {
         minSdk = 23
         targetSdk = 30
-
+        
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-
-        viewBinding {
-            isEnabled = true
-        }
     }
-
+    
     buildTypes {
-        getByName("release")  {
+        getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -36,25 +35,27 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+    
     // Kotlin
-    api(buildsrc.Libs.Kotlin.stdlib)
-
+    implementation(buildsrc.Libs.Kotlin.stdlib)
+    
     // OkHttp
-    api(platform(buildsrc.Libs.Network.OkHttp.bom))
-    api(buildsrc.Libs.Network.OkHttp.okhttp)
-    api(buildsrc.Libs.Network.OkHttp.logging)
-
+    implementation(platform(buildsrc.Libs.Network.OkHttp.bom))
+    implementation(buildsrc.Libs.Network.OkHttp.okhttp)
+    implementation(buildsrc.Libs.Network.OkHttp.logging)
+    
     // Retrofit
     api(buildsrc.Libs.Network.Retrofit.retrofit)
     api(buildsrc.Libs.Network.Retrofit.gsonConverter)
-
+    
     // Retrofit - Coroutine network response adapter
     //api "com.github.haroldadmin:NetworkResponseAdapter:4.1.0"
-
+    
     // An adaptation of the JSR-310 backport for Android.
-    api("com.jakewharton.threetenabp:threetenabp:1.2.1")
+    implementation("com.jakewharton.threetenabp:threetenabp:1.2.1")
     testImplementation("org.threeten:threetenbp:1.4.0")
-
+    
     // Test
     androidTestApi(buildsrc.Libs.AndroidX.Test.junit)
     androidTestApi(buildsrc.Libs.AndroidX.Test.espressoCore)
