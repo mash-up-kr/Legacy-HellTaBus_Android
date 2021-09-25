@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name = "헬시업(Healthy UP)"
