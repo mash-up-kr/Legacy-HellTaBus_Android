@@ -17,6 +17,15 @@
 		android:supportsRtl="true"
 		android:theme="@style/Theme.헬시업HealthyUP"
 		android:name=".HelltabusApplication">
+		<activity
+			android:name=".features.launcher.LauncherActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
 	</application>
 
 </manifest>
