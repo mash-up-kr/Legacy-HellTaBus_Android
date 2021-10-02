@@ -45,7 +45,10 @@ dependencies {
     implementation(project(":presentation"))
     implementation(project(":domain"))
     implementation(project(":data"))
-    
+
+    // Material
+    implementation(buildsrc.Libs.material)
+
     // Hilt
     implementation(buildsrc.Libs.Hilt.hilt)
     implementation("androidx.test:monitor:1.4.0")
