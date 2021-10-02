@@ -65,4 +65,5 @@ dependencies {
     androidTestApi(buildsrc.Libs.AndroidX.Test.espressoCore)
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
+    implementation("javax.inject:javax.inject:1")
 }

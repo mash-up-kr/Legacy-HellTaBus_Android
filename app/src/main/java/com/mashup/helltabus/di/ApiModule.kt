@@ -1,5 +1,6 @@
 package com.mashup.helltabus.di
 
+import com.helltabus.data.api.DumApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,5 +29,11 @@ object ApiModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDumApi(retrofit: Retrofit): DumApi {
+        return retrofit.create(DumApi::class.java)
     }
 }

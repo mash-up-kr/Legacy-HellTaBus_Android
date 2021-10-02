@@ -5,8 +5,9 @@ import com.helltabus.data.request.Daangn
 import com.helltabus.domain.Result
 import com.helltabus.domain.entity.User
 import com.helltabus.domain.repository.UserRepository
+import javax.inject.Inject
 
-class UserDumRepositoryImpl(
+class UserDumRepositoryImpl @Inject constructor(
     private val dumApi: DumApi
 ) : UserRepository {
     override suspend fun getUser(userId: Long): Result<User> {

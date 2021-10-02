@@ -1,5 +1,7 @@
 package com.mashup.helltabus.di
 
+import com.helltabus.data.api.DumApi
+import com.helltabus.data.repository.UserDumRepositoryImpl
 import com.helltabus.domain.repository.UserRepository
 import com.helltabus.domain.usecase.GetUserUseCase
 import com.mashup.helltabus.ExecutorProvider
@@ -44,7 +46,12 @@ object AppModule {
     ) : GetUserUseCase {
         return GetUserUseCase(userRepository, executorProvider.io())
     }
-    
+
+    @Provides
+    fun provideUserRepository(api: DumApi): UserRepository {
+        return UserDumRepositoryImpl(api)
+    }
+
     // Logger 주입
     
     // 전역 Config
